@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 const corsOptions = {
     origin: (origin, callback) => {
-        if (process.env.CLIENT_URL.includes(origin)) {
+        if (process.env.CLIENT_URL.split(',').includes(origin)) {
             callback(null, true);
         }else {
             callback(new Error("Not Allowed by CORS"))
