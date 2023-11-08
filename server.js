@@ -16,7 +16,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const corsOptions = {
-    origin: process.env.CLIENT_URL,
+    origin: (origin, callback) => {
+        if (process.env.CLIENT_URL.includes(origin)) {
+            callback(null, true);
+        }else {
+            callback(new Error("Not Allowed by CORS"))
+        }
+    },
     credentials: true,
   };
 //setting the middleware
