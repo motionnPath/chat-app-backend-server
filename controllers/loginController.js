@@ -39,7 +39,7 @@ const loginAuth = async (req, res) => {
       console.log('refrechToken = ', refreshToken)
       console.log('accessToken = ', accessToken)
         
-      res.cookie('jwt',refreshToken, {httpOnly: true, maxAge: 24 * 60 * 60 * 1000}); // ms
+      res.cookie('jwt',refreshToken, {httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: true, sameSite: 'None'}); // ms
       res.json({username: user.username ,accessToken});
       
     } catch (error) {
