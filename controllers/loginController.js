@@ -36,8 +36,7 @@ const loginAuth = async (req, res) => {
       user.refreshToken = refreshToken;
       const result = await user.save();
       
-      console.log('refrechToken = ', refreshToken)
-      console.log('accessToken = ', accessToken)
+      
         
       res.cookie('jwt',refreshToken, {httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: true, sameSite: 'None'}); // ms
       res.json({username: user.username ,accessToken});
