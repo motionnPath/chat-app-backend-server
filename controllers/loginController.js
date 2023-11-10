@@ -38,7 +38,13 @@ const loginAuth = async (req, res) => {
       
       
         
-      res.cookie('jwt',refreshToken, {httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: true, sameSite: 'None'}); // ms
+      res.cookie('jwt',refreshToken, {
+        httpOnly: true, 
+        maxAge: 24 * 60 * 60 * 1000, 
+        secure: true, 
+        sameSite: 'None',
+        domain:'.onrender.com'
+      }); // ms
       res.json({username: user.username ,accessToken});
       
     } catch (error) {
