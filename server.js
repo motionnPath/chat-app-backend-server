@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const corsOptions = {
-    origin: process.env.CLIENT_URL,
+    origin: 'https://chat-app-frontend-yevs.onrender.com',
     credentials: true,
   };
 //setting the middleware
