@@ -3,9 +3,9 @@ require('dotenv').config();
 
 
 
-const publicVapiKey = process.env.PUBLIC_VAPI_KEY;
+const publicVapiKey = webpush.generateVAPIDKeys().publicKey;
 
-const privateVapiKey = process.env.PRIVATE_VAPI_KEY;
+const privateVapiKey = webpush.generateVAPIDKeys().privateKey;
 
 
 webpush.setVapidDetails(
