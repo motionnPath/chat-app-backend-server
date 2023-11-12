@@ -4,11 +4,11 @@ require('dotenv').config();
 
 const vapidKeys = webpush.generateVAPIDKeys();
 
-const publicVapiKey = "BOGHw5Hs6L97UJypiTH6T9XCcY6TOH9TZ9lwTSri-rmbGqzZWb7MHwnI0j3vVl0Njw7vUlEz7S0P9kP6JKsvxtU";
+const publicVapiKey = "debe4d3e753ee783208b71b840ee8b0580e5e35417cd5cb0ff67bffa4d2e9a2da68b22572e337d15707159d89e873f113ddafeba4bb6cc9be69c38244a653a53";
 
-const privateVapiKey = "lYNaqhcRo3f20ievMiOV2aLWyAMiwEg4WnK-2pKQ1JU";
+const privateVapiKey = "4f28bbdfad153213c29cd7bcde58749716e0d612d823c495e2b6be7c8335fdb09878a7b1d2ba10fdfa6fe85cb47cec90f9eeee9c9d07f1b0ea4dd2891f12a46a";
 
-
+console.log(publicVapiKey.length)
 webpush.setVapidDetails(
     'mailto:getthebox8@gmail.com', 
     publicVapiKey, 
