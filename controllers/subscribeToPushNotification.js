@@ -25,7 +25,7 @@ const subscribeToPush = async (req,res) => {
     res.status(201).json({})
     
     //create payload
-    const payload = JSON.stringify({"title":"Push test"});
+    const payload = JSON.stringify({"title":"Your ChatCat Team"});
 
     webpush.sendNotification(subscription, payload).catch(e => console.log(e))
 
