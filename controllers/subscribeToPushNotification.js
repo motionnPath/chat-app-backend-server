@@ -1,10 +1,11 @@
 const webpush = require('web-push');
+require('dotenv').config();
 
 
 
-const publicVapiKey = 'BOjpnuXHKS_GaIOUrapvs1N7OmWry2ZMHftsKp0utbRhIG6gO43rTXEPFi8AQbgTVQbEcBasewHfuHb1Kk6_bIw';
+const publicVapiKey = process.env.PUBLIC_VAPI_KEY;
 
-const privateVapiKey = '_puuJdvJkIc5RB4-zdKr3sViuamrUSCFaVXOMcTRKvo';
+const privateVapiKey = process.env.PRIVATE_VAPI_KEY;
 
 
 webpush.setVapidDetails(
