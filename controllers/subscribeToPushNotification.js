@@ -2,10 +2,11 @@ const webpush = require('web-push');
 require('dotenv').config();
 
 
+const vapidKeys = webpush.generateVAPIDKeys();
 
-const publicVapiKey = webpush.generateVAPIDKeys().publicKey;
+const publicVapiKey = vapidKeys.publicKey;
 
-const privateVapiKey = webpush.generateVAPIDKeys().privateKey;
+const privateVapiKey = vapidKeys.privateKey;
 
 
 webpush.setVapidDetails(
