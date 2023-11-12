@@ -38,6 +38,9 @@ connection.once('open',()=>{
 const userRouter = require('./routes/users')
 app.use('/users', userRouter);
 
+const endpointRouter = require('./routes/endpoints')
+app.use('/endpoints', endpointRouter);
+
 const conversationRouter = require('./routes/conversations')
 app.use('/conversations', conversationRouter);
 

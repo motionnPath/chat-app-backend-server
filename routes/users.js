@@ -16,6 +16,7 @@ router.get('/',handleRetrieveUsers.retrieveUsers);
 router.post('/register', handleRegister.register);
 // Login
 router.post('/login', handleLoginAuth.loginAuth);
+
 // get refrechToken
 router.get('/login',handleRefreshToken.handleRefreshToken);
 //resend verification code
