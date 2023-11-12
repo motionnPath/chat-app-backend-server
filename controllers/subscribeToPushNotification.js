@@ -17,7 +17,7 @@ webpush.setVapidDetails(
 
 const subscribeToPush = async (req,res) => {
 
-    const subscription = req.body;
+    const { subscription } = req.body;
    
 
     console.log("subscription = ",subscription)
