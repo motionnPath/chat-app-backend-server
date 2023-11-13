@@ -1,6 +1,6 @@
 const webpush = require('web-push');
 require('dotenv').config();
-const Endpoint = require('../models/usersEndpoint.model');
+const Endpoint = require('../models/usersEndpoints.model');
 
 
 //const vapidKeys = webpush.generateVAPIDKeys();
@@ -21,7 +21,7 @@ const subscribeToPush = async (req,res) => {
     const { subscription, username, email }  = req.body;
    
 
-    console.log("subscription = ",subscription)
+    
 
     res.status(201).json({})
     
