@@ -29,26 +29,14 @@ const subscribeToPush = async (req,res) => {
         "body":`Welcome ${username} ❤️ Enjoy connecting with the community` 
     });
 
-    webpush.sendNotification(subscription, payload).catch(e => console.log(e))
+    
 
     // saving recieved data to endpoints model
     const endpoint = await Endpoint.findOne({email})
 
     if(endpoint) {
-        // update subscription of endpoint hier maybe he is logged in
-        // from a new device
-        await Endpoint.updateOne(
-            {email:endpoint.email},
-            { $set: { device_endpoint: subscription } }
-        )
+        webpush.sendNotification(subscription, payload).catch(e => console.log(e))
     }
-
-    
-    const newEndpoint = new Endpoint({
-        email, 
-        device_endpoint:subscription
-    })
-    await newEndpoint.save().catch(e => console.log(e))
     
 }
 
