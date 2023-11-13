@@ -9,7 +9,7 @@ const endpointSchema = new Schema({
     },
     device_endpoint: {
         type:Object, 
-        unique:true
+        unique:false
     }
 },{
     timestamps: true,
