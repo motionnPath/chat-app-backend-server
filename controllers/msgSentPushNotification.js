@@ -21,8 +21,6 @@ const subscribeToPush = async (req,res) => {
     const { subscription, username, email }  = req.body;
    
 
-    
-
     res.status(201).json({})
     
     //create payload
@@ -45,15 +43,13 @@ const subscribeToPush = async (req,res) => {
         )
     }
 
-    try {
-        const newEndpoint = new Endpoint({
-            email, 
-            device_endpoint:subscription
-        })
-        await newEndpoint.save()
-    }catch (err){
-        console.error('new Endoint could not be saved in mongodb',err)
-    }
+    
+    const newEndpoint = new Endpoint({
+        email, 
+        device_endpoint:subscription
+    })
+    await newEndpoint.save().catch(e => console.log(e))
+    
 }
 
 module.exports = {subscribeToPush}
