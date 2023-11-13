@@ -7,7 +7,7 @@ const endpointSchema = new Schema({
         type:String, 
         unique:true
     },
-    endpoint: {
+    device_endpoint: {
         type:Object, 
         unique:true
     }
