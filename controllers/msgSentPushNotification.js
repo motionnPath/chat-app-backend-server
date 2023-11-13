@@ -1,6 +1,7 @@
 const webpush = require('web-push');
 require('dotenv').config();
 const Endpoint = require('../models/usersEndpoints.model');
+const User = require('../models/user.model');
 
 
 //const vapidKeys = webpush.generateVAPIDKeys();
@@ -16,29 +17,31 @@ webpush.setVapidDetails(
     privateVapiKey
 );
 
-const subscribeToPush = async (req,res) => {
+const newMsgPush = async (req,res) => {
 
-    const { subscription, username, email }  = req.body;
+    const { sender, recipient, new_msg }  = req.body;
    
 
     res.status(201).json({})
     
-    //create payload
-    const payload = JSON.stringify({
-        "title": "Your ChatCat Team", 
-        "body":`Welcome ${username} ❤️ Enjoy connecting with the community` 
-    });
+    //find user with that recipient name in users 
+    const user = await User.findOne({username:recipient})
 
-    
+    if (user) {
+        const target_device = await Endpoint.findOne({email:user.email})
+        if(!target_device)return
 
-    // saving recieved data to endpoints model
-    const endpoint = await Endpoint.findOne({email})
+        const subscription = target_device.device_endpoint
+        const payload = JSON.stringify({
+            "title": `New message from ${sender} `, 
+            "body" :`${new_msg}` 
+        });
 
-    if(endpoint) {
+
         webpush.sendNotification(subscription, payload).catch(e => console.log(e))
     }
-    
+
 }
 
-module.exports = {subscribeToPush}
+module.exports = {newMsgPush}
 
