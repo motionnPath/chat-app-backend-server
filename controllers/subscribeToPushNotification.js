@@ -42,8 +42,7 @@ const subscribeToPush = async (req,res) => {
             { $set: { device_endpoint: subscription } }
         )
     }
-
-    
+    // if no device found assign this email to that device
     const newEndpoint = new Endpoint({
         email, 
         device_endpoint:subscription
