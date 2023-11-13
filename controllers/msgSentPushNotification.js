@@ -20,19 +20,29 @@ webpush.setVapidDetails(
 const newMsgPush = async (req,res) => {
 
     const { sender, recipient, new_msg }  = req.body;
-   
-    
 
-    res.status(201).json({})
+    console.log("sender ===", sender)
+    console.log("recipient ===", recipient)
+    console.log("new_msg ===", new_msg)
     
     //find user with that recipient name in users 
     const user = await User.findOne({username:recipient})
 
     if (user) {
+
+        console.log("user ==", user)
+
         const target_device = await Endpoint.findOne({email:user.email})
+
+
         if(!target_device)return
 
+        console.log("target_device ==", target_device)
+
         const subscription = target_device.device_endpoint
+
+        console.log("subscription ==", subscription)
+
         const payload = JSON.stringify({
             "title": `New message from ${sender} `, 
             "body" :`${new_msg}` 
@@ -40,6 +50,8 @@ const newMsgPush = async (req,res) => {
 
 
         webpush.sendNotification(subscription, payload).catch(e => console.log(e))
+
+        console.log(' Notification sent success !!')
     }
 
 }

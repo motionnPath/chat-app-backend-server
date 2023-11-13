@@ -4,7 +4,7 @@ module.exports.newConversation = async (req,res) => {
 
     const {conversation} = req.body;
 
-    console.log("conversation = ",conversation)
+    //console.log("conversation = ",conversation)
 
     const newConversation = new Conversation({conversation:conversation});
 
